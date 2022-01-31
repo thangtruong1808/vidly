@@ -30,6 +30,7 @@ class Movies extends Component {
 				<table className="table">
 					<thead>
 						<tr>
+							<th>ID</th>
 							<th>Title</th>
 							<th>Genre</th>
 							<th>Stock</th>
@@ -40,6 +41,7 @@ class Movies extends Component {
 					<tbody>
 						{this.state.movies.map((movie) => (
 							<tr key={movie._id}>
+								<td>{movie._id}</td>
 								<td>{movie.title}</td>
 								<td>{movie.genre.name}</td>
 								<td>{movie.numberInStock}</td>
