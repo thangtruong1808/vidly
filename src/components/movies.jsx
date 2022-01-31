@@ -14,36 +14,49 @@ class Movies extends Component {
 	};
 
 	render() {
+		const { length: countMovies } = this.state.movies;
+		if (countMovies === 0) {
+			return (
+				<p className="badge bg-warning text-dark">
+					There are no movies in the database.
+				</p>
+			);
+		}
 		return (
-			<table className="table">
-				<thead>
-					<tr>
-						<th>Title</th>
-						<th>Genre</th>
-						<th>Stock</th>
-						<th>Rate</th>
-						<th>Action</th>
-					</tr>
-				</thead>
-				<tbody>
-					{this.state.movies.map((movie) => (
-						<tr key={movie._id}>
-							<td>{movie.title}</td>
-							<td>{movie.genre.name}</td>
-							<td>{movie.numberInStock}</td>
-							<td>{movie.dailyRentalRate}</td>
-							<td>
-								<button
-									onClick={() => this.handleDelete(movie)}
-									className="btn btn-danger btn-sm"
-								>
-									Delete
-								</button>
-							</td>
+			<div>
+				<p className="badge bg-success">
+					Showing {countMovies} movies in the databse
+				</p>
+				<table className="table">
+					<thead>
+						<tr>
+							<th>Title</th>
+							<th>Genre</th>
+							<th>Stock</th>
+							<th>Rate</th>
+							<th>Action</th>
 						</tr>
-					))}
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+						{this.state.movies.map((movie) => (
+							<tr key={movie._id}>
+								<td>{movie.title}</td>
+								<td>{movie.genre.name}</td>
+								<td>{movie.numberInStock}</td>
+								<td>{movie.dailyRentalRate}</td>
+								<td>
+									<button
+										onClick={() => this.handleDelete(movie)}
+										className="btn btn-danger btn-sm"
+									>
+										Delete
+									</button>
+								</td>
+							</tr>
+						))}
+					</tbody>
+				</table>
+			</div>
 		);
 	}
 }
